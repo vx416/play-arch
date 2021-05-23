@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: drone-server-secret
+  namespace: drone
+type: Opaque
+data:
+  DRONE_GITHUB_CLIENT_ID: 68aaef12a20dcda5aeb5     #Get this from GitHub OAUTH
+  DRONE_GITHUB_CLIENT_SECRET: 70c20299a2733247c23473da49e1b5ca44bfb0f3  #Get this from GitHub OAUTH
+  DRONE_RPC_SECRET: a994adbd52af1cfe702c3e5057115fa2           #openssl rand -hex 16
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drone-server
+  labels:
+    app: drone-server
+  namespace: drone
+spec:
+  selector:
+    matchLabels:
+      app: drone-server
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: drone-server
+    spec:
+      containers:
+      - name: drone-server
+        image: drone/drone:1.6.5
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        env:
+        - name: DRONE_USER_CREATE
+          value: username:vicxu416,machine:false,admin:true,token:7eacd497d0df122b49bf54d7b72f1ded474d11d1
+        - name: DRONE_DATABASE_DRIVER
+          value: postgres
+        - name: DRONE_DATABASE_DATASOURCE 
+          value: postgres://postgresadmin:admin123@postgres:5432/postgresdb?sslmode=disable
+        - name: DRONE_SERVER_PROTO
+          value: https
+        - name: DRONE_SERVER_HOST 
+          value: c97af723e53c.ngrok.io
+        - name: DRONE_GITHUB_CLIENT_ID
+          value: 68aaef12a20dcda5aeb5
+        - name: DRONE_GITHUB_CLIENT_SECRET 
+          value: 70c20299a2733247c23473da49e1b5ca44bfb0f3
+        - name: DRONE_RPC_SECRET 
+          valueFrom:
+            secretKeyRef:
+              name: drone-server-secret
+              key: DRONE_RPC_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: droneserver
+  labels:
+    app: drone-server
+  namespace: drone
+spec:
+  type: NodePort
+  selector:
+    app: drone-server
+  ports:
+    - protocol: TCP
+      name: http
+      port: 80
+      targetPort: 80
+      nodePort: 30080
+    - protocol: TCP
+      name: https
+      port: 443
+      targetPort: 443
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: drone-server
+  namespace: drone
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: drone.dev
+    http:
+      paths:
+      - backend:
+          serviceName: droneserver
+          servicePort: 80
+        path: /
+        pathType: Exact

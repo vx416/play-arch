@@ -1,0 +1,20 @@
+---
+  - hosts: server
+    become: true
+    tasks:
+      - name: run server1 container
+        docker_container:
+          name: my-server
+          image: vicxu/server
+          ports:
+            - "1333:8080"
+          env:
+            APP_NAME: server_a
+      - name: run server2 container
+        docker_container:
+          name: my-server2
+          image: vicxu/server
+          ports:
+            - "1334:8080"
+          env:
+            APP_NAME: server_b

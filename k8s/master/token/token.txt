@@ -1,0 +1,1 @@
+kubeadm join 192.168.101.15:6443 --token sylerv.j9gva5674guw4c0s     --discovery-token-ca-cert-hash sha256:a189f9b63feb0806ffcdb19a0aa43832ee8c7062309ff1d3078840b0d32df1e6 

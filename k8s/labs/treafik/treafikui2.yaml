@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-web-ui
+  namespace: kube-system
+spec:
+  selector:
+    k8s-app: traefik-ingress-lb
+  ports:
+  - name: web
+    port: 80
+    targetPort: 8080
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefikuiingressroute
+  namespace: lab1
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: Host(`traefik-ui.example.com`)
+    kind: Rule
+    services:
+    - name: traefik-web-ui
+      port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-dashboard
+spec:
+  entryPoints:
+    - http
+  routes:
+  - match: Host(`traefik.domain.com`)
+    kind: Rule
+    services:
+    - name: api@internal
+      kind: TraefikService

@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  redis-master:
+    image: redis:6.0.9-alpine
+    command: redis-server /etc/redis.conf
+    volumes:
+     - ${PWD}/master.conf:/etc/redis.conf
+    ports:
+    - 16379:6379
+  redis-slave:
+    image: redis:6.0.9-alpine
+    command: redis-server /etc/redis.conf
+    volumes:
+      - ${PWD}/slave.conf:/etc/redis.conf
+    ports:
+     - 26379:6379
+
+
+networks:
+  redis-cluster:
+    driver: bridge

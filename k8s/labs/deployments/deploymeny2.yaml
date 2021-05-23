@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-server-deployment2
+  namespace: deployment-lab
+  labels:
+    tier: application
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      name: demo_server2
+      env: dev
+  template:
+    metadata:
+      labels:
+        name: demo_server2
+        env: dev
+    spec:
+      containers:
+      - name: hello
+        image: vicxu/server
+        env:
+        - name: APP_NAME
+          value: deployment_b
+        ports:
+        - containerPort: 8080

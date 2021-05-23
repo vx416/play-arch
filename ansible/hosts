@@ -1,0 +1,5 @@
+[vagrant]
+192.168.51.15 ansible_user=vagrant ansible_connection=ssh ansible_ssh_pass=vagrant
+
+[server]
+209.97.172.117 ansible_user=root ansible_connection=ssh

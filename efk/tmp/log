@@ -1,0 +1,20 @@
+{"level":"info","ts":1600954578.8763504,"caller":"server/main.go:33","msg":"logger recorde on /tmp/log"}
+{"level":"info","ts":1600954578.8769197,"caller":"server/main.go:45","msg":"run server on 0.0.0.0:13333"}
+{"level":"info","ts":1600954582.2336626,"caller":"server/main.go:52","msg":"access log","timestamp":1600954582.2336435,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954582.6020439,"caller":"server/main.go:52","msg":"access log","timestamp":1600954582.602028,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954582.7694387,"caller":"server/main.go:52","msg":"access log","timestamp":1600954582.7694252,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954582.9297695,"caller":"server/main.go:52","msg":"access log","timestamp":1600954582.9297562,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954583.0850282,"caller":"server/main.go:52","msg":"access log","timestamp":1600954583.085015,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954583.2441075,"caller":"server/main.go:52","msg":"access log","timestamp":1600954583.2440953,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954731.6641362,"caller":"server/main.go:52","msg":"access log","timestamp":1600954731.664114,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954731.968206,"caller":"server/main.go:52","msg":"access log","timestamp":1600954731.9681897,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954732.1243267,"caller":"server/main.go:52","msg":"access log","timestamp":1600954732.1243165,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954732.2690175,"caller":"server/main.go:52","msg":"access log","timestamp":1600954732.269008,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954732.4287703,"caller":"server/main.go:52","msg":"access log","timestamp":1600954732.4287577,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954732.5741737,"caller":"server/main.go:52","msg":"access log","timestamp":1600954732.57416,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/ping"}
+{"level":"info","ts":1600954739.4591832,"caller":"server/main.go:59","msg":"access log","timestamp":1600954739.459169,"client_ip":"172.17.0.1:48586","method":"GET","uri":"/"}
+{"level":"info","ts":1600955796.6630065,"caller":"server/main.go:59","msg":"access log","timestamp":1600955796.662997,"client_ip":"172.17.0.1:48606","method":"GET","uri":"/"}
+{"level":"info","ts":1600955797.022624,"caller":"server/main.go:59","msg":"access log","timestamp":1600955797.0226114,"client_ip":"172.17.0.1:48606","method":"GET","uri":"/"}
+{"level":"info","ts":1600955797.1790595,"caller":"server/main.go:59","msg":"access log","timestamp":1600955797.1790483,"client_ip":"172.17.0.1:48606","method":"GET","uri":"/"}
+{"level":"info","ts":1600955797.3243914,"caller":"server/main.go:59","msg":"access log","timestamp":1600955797.324374,"client_ip":"172.17.0.1:48606","method":"GET","uri":"/"}
+{"level":"info","ts":1600956235.7094471,"caller":"server/main.go:52","msg":"access log","timestamp":1600956235.7094352,"client_ip":"172.17.0.1:48612","method":"GET","uri":"/ping"}

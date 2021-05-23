@@ -1,0 +1,21 @@
+---
+  - hosts: vagrant
+    become: true
+    tasks:
+      - name: echo test
+        shell: echo test
+      - name: install redis
+        apt:
+          name: redis-server
+          update_cache: yes        
+          state: latest
+      - name: copy redis config
+        copy:
+          src: "{{playbook_dir}}/redis.conf"
+          dest: "{{ redis_config }}"
+        vars:
+          redis_config: /etc/redis/redis.conf
+      - name: restart redis
+        systemd:
+          name: redis-server
+          state: restarted 

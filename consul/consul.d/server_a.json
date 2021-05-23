@@ -1,0 +1,36 @@
+{
+  "services":[
+    {
+      "id": "a0",
+      "name": "server_a",
+      "tags": ["golang"],
+      "port": 80,
+      "check": {
+        "args": [
+          "curl",
+          "localhost:80/ping"
+        ],
+        "interval": "10s"
+      },
+      "connect":{
+        "sidecar_service":{}
+      }
+    },
+    {
+      "id": "a1",
+      "name": "server_a",
+      "tags": ["golang"],
+      "port": 81,
+      "check": {
+        "args": [
+          "curl",
+          "localhost:81/ping"
+        ],
+        "interval": "10s"
+      },
+      "connect":{
+        "sidecar_service":{}
+      }
+    }
+  ]
+}

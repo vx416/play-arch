@@ -1,0 +1,26 @@
+{
+  "service":{
+    "id": "b0",
+    "name": "server_b",
+    "port": 90,
+    "check": {
+      "args": [
+        "curl",
+        "localhost:90/ping"
+      ],
+      "interval": "10s"
+    },
+    "connect":{
+      "sidecar_service":{
+        "proxy":{
+          "upstreams": [
+            {
+              "destination_name": "server_a",
+              "local_bind_port": 8811
+            }
+          ]
+        }
+      }
+    }
+  }
+}
