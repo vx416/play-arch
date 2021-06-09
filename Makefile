@@ -26,3 +26,6 @@ machine.up:
 
 machine.down:
 	vagrant down
+
+run.redis:
+	docker-compose -f $(CURDIR)/redis/docker-compose.yaml -p redis up
