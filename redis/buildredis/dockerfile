@@ -1,0 +1,5 @@
+FROM redis:6.0.9-alpine
+
+EXPOSE 6379 16379
+COPY ms.conf /etc/redis/ms.conf
+ENTRYPOINT redis-server /etc/redis/ms.conf

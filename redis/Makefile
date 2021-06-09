@@ -7,4 +7,4 @@ run.single:
 	redis redis-server /etc/redis.conf
 
 run.cluster:
-	docker-compose -f $(PWD)/docker-compose.yaml -p redis-cluster up
+	docker-compose -f $(PWD)/docker-compose.yaml -p redis-cluster up --build
